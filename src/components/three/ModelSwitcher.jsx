@@ -40,7 +40,7 @@ const ModelSwitcher = ({scale, isMobile}) => {
             fadeMeshes(largeMacbookRef.current, 1);
         } else {
             moveGroup(smallMacbookRef.current, 0);
-            moveGroup(largeMacbookRef.current, -OFFSET_DISTANCE);
+            moveGroup(largeMacbookRef.current, OFFSET_DISTANCE);
 
             fadeMeshes(smallMacbookRef.current, 1);
             fadeMeshes(largeMacbookRef.current, 0);
