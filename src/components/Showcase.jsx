@@ -6,23 +6,28 @@ const Showcase = () => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)'});
 
     useGSAP(() => {
-        if(!isTablet) {
+        if (!isTablet) {
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: '#showcase',
-                    start: 'top top',
-                    end: 'bottom top',
+                    start: 'top center',
+                    end: '+=100%',
                     scrub: true,
-                    pin: true,
-                }
+                    // προσωρινά χωρίς pin
+                    // pin: true,
+                },
             });
 
             timeline
-                .to('.mask img', {
-                    transform: 'scale(1.1)'
-                }).to('.content', { opacity: 1, y: 0, ease: 'power1.in' });
+                .to('.mask img', { transform: 'scale(1.1)' })
+                .to('.content', { opacity: 1, y: 0, ease: 'power1.in' });
+
+            return () => {
+                timeline.scrollTrigger && timeline.scrollTrigger.kill();
+                timeline.kill();
+            };
         }
-    }, [isTablet])
+    }, [isTablet]);
 
     return (
         <section id="showcase">
@@ -36,7 +41,7 @@ const Showcase = () => {
             <div className="content">
                 <div className="wrapper">
                     <div className="lg:max-w-md">
-                        <h2>Rocket. Chip</h2>
+                        <h2>Rocket Chip</h2>
 
                         <div className="space-y-5 mt-7 pe-10">
                             <p>
