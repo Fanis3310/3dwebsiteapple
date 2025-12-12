@@ -29,7 +29,7 @@ export default function MacbookModel16(props) {
 
             }
         })
-    }, [color])
+    }, [color, scene])
 
 
   return (
