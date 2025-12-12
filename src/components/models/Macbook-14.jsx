@@ -11,6 +11,8 @@ export default function MacbookModel14(props) {
     const texture = useTexture('/screen.png');
 
     useEffect(() => {
+        texture.colorSpace = SRGBColorSpace;
+        texture.needsUpdate = true;
         scene.traverse((child) => {
             if(child.isMesh) {
                 if(!noChangeParts.includes(child.name)) {
@@ -18,7 +20,7 @@ export default function MacbookModel14(props) {
                 }
             }
         })
-    }, [color, scene])
+    }, [color, scene, texture])
 
     return (
         <group {...props} dispose={null}>
