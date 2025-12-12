@@ -13,8 +13,6 @@ const Showcase = () => {
                     start: 'top center',
                     end: '+=100%',
                     scrub: true,
-                    // προσωρινά χωρίς pin
-                    // pin: true,
                 },
             });
 
