@@ -9,10 +9,11 @@ export default function MacbookModel16(props) {
     const { nodes, materials, scene} = useGLTF('/models/macbook-16-transformed.glb')
 
     const texture = useTexture('/screen.png');
-    texture.colorSpace = SRGBColorSpace;
-    texture.needsUpdate = true;
+
 
     useEffect(() => {
+        texture.colorSpace = SRGBColorSpace;
+        texture.needsUpdate = true;
         scene.traverse((child) => {
             if (child.isMesh) {
                 if (!noChangeParts.includes(child.name)) {
@@ -20,7 +21,7 @@ export default function MacbookModel16(props) {
                 }
             }
         });
-    }, [color, scene]);
+    }, [color, scene, texture]);
 
     return (
         <group {...props} dispose={null}>
