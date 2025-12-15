@@ -108,6 +108,7 @@ const Performance = () => {
                 });
 
                 // HOVER EFFECTS (scale + glow)
+                const listeners = [];
                 gsap.utils.toArray(".perf-img").forEach((img) => {
                     const hoverTl = gsap.timeline({ paused: true });
                     hoverTl.to(img, {
@@ -117,9 +118,19 @@ const Performance = () => {
                         ease: "power2.out",
                     });
 
-                    img.addEventListener("mouseenter", () => hoverTl.play());
-                    img.addEventListener("mouseleave", () => hoverTl.reverse());
+                    const onEnter = () => hoverTl.play();
+                    const onLeave = () => hoverTl.reverse();
+                    img.addEventListener("mouseenter", onEnter);
+                    img.addEventListener("mouseleave", onLeave);
+                    listeners.push({ img, onEnter, onLeave });
                 });
+
+                return () => {
+                    listeners.forEach(({ img, onEnter, onLeave }) => {
+                        img.removeEventListener("mouseenter", onEnter);
+                        img.removeEventListener("mouseleave", onLeave);
+                    });
+                };
             }, sectionEl);
 
             return () => ctx.revert();
