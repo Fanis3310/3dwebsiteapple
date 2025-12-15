@@ -11,13 +11,13 @@ const Showcase = () => {
                 scrollTrigger: {
                     trigger: '#showcase',
                     start: 'top center',
-                    end: '+=85%',
+                    end: '+=86%',
                     scrub: true,
                 },
             });
 
             timeline
-                .to('.mask img', { transform: 'scale(1.1)' })
+                .to('.mask img', { transform: 'scale(1.5)' })
                 .to('.content', { opacity: 1, y: 0, ease: 'power1.in' });
 
             return () => {

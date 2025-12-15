@@ -80,7 +80,7 @@ const ModelScroll = () => {
     return (
         <group ref={groupRef}>
             <Suspense fallback={<Html><h1 className="text-white text-3xl uppercase">Loading...</h1></Html>}>
-                <MacbookModel scale={isMobile ? 0.07 : 0.10} position={[0, -1, 0]} />
+                <MacbookModel scale={isMobile ? 0.06 : 0.09} position={isMobile ? [0, -1.5, 0] : [0, -1, 0]} />
             </Suspense>
         </group>
     )
